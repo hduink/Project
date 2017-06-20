@@ -20,9 +20,10 @@
 		<div id="header_center">
 			<div id="input_form">
 				<form method="get" action="">
-					product <input type="text"><br><br>
-					location <input type="text"><br>
-					price <input type="range" min="10" max="200"/><br>
+					product<br> <input type="text"><br><br>
+					location<br> <input type="text"><br><br>
+					price<br> 
+					10<input type="range" min="10" max="200"/>200<br>
 				
 				</form>
 			</div>
