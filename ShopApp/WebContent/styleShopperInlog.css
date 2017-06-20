@@ -1,0 +1,37 @@
+@CHARSET "ISO-8859-1";
+body{
+	font-family: arial;
+	font-size: 14px;
+		
+}
+
+#wrapper{
+	font-family: verdana;
+	width: 900px;
+	overflow: auto;
+	margin: 0 auto;
+	}
+	
+#header{
+	width: auto;
+	overflow: auto;
+}	
+
+#header_top{
+	width: auto;
+	overflow: auto;
+}	
+#logo{
+	width: 400px;
+	overflow: auto;
+	float: left;
+	margin: 10px;
+}
+
+#logo h1{
+	margin: 0;
+	padding: 0;
+	font-size: 45px;
+	font-family: Arial;
+	font-weight: 100;
+}
