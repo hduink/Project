@@ -16,7 +16,7 @@ public class Map extends HttpServlet {
 	private int lat;
 	private int lng;
 	
-	
+	1 2 3 4
 	
 	public int getLat() {
 		return lat;
