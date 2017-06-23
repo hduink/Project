@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/map")
 public class Map extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private int lat;
+	public int lat;
 	private int lng;
 	
 	
