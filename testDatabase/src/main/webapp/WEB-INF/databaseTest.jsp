@@ -22,13 +22,23 @@
 	crossorigin="anonymous"></script>
 
 <style>
-.row{
-padding: 20px 20px 20px 20px
-}
-td{
-padding: 5px 5px 5px 5px
+.row {
+	padding: 20px 20px 20px 20px;
 }
 
+td {
+	color: white;
+	padding: 5px 5px 5px 5px;
+}
+
+.col-md-4{
+padding: 15px 15px 15px 15px;
+color: white;
+background-color: #009999;
+}
+.input_form{
+
+}
 </style>
 
 </head>
@@ -71,11 +81,10 @@ padding: 5px 5px 5px 5px
 							<td><output name="amount" for="rangeInput"></output></td>
 						</tr>
 						<tr>
-							<td colspan="2"><input type="submit" name="action"
-								value="Add" /></td>
-						</tr>
-						<tr>
-							<td colspan="2"><input type="reset" value="Reset" /></td>
+							<td><input class="btn btn-default" type="submit"
+								value="submit">
+							<td><input class="btn btn-default" type="reset"
+								value="reset"></td>
 						</tr>
 					</table>
 				</form>
