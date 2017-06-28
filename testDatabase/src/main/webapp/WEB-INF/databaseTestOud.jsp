@@ -31,14 +31,13 @@ td {
 	padding: 5px 5px 5px 5px;
 }
 
-.login{
+.col-md-4{
 padding: 15px 15px 15px 15px;
 color: white;
 background-color: #009999;
 }
-#map{
-width: 100%;
-height: 200px;
+.input_form{
+
 }
 </style>
 
@@ -46,7 +45,7 @@ height: 200px;
 
 <body>
 	<div class="row">
-		<div class="col-md-5 login">
+		<div class="col-md-4">
 			<div class="logo">
 				<h1>Shop Search</h1>
 				<h2>What are you looking for?</h2>
@@ -92,8 +91,8 @@ height: 200px;
 			</div>
 		</div>
 
-		<div class="col-md-7">
-			<div id="map">
+		<div class="col-md-8">
+			<div class="map">
 				<h3>Kaart demo import data</h3>
 				<script>
 					function initMap() {
