@@ -17,8 +17,11 @@ public class DatabaseController {
 		}
 		
 	@RequestMapping(value="/databaseTest", method=RequestMethod.POST)
-	public String inputSubmit(ShopInput shopInput){
-		repo.save(shopInput);
+	public String inputSubmit(InputSearch inputSearch){
+		repo.save(inputSearch);
 		return "databaseTest";
 	}
+	
+	
+	
 }

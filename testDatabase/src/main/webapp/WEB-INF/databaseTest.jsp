@@ -35,7 +35,7 @@ td {
 
 .login {
 	padding: 20px 20px 20px 20px;
-	color: white;
+	color: black;
 	background-color: #009999;
 }
 
@@ -65,39 +65,35 @@ td {
 			</div>
 			<div class="input_form">
 				<form action="/databaseTest" method="POST">
-					<tr>
-						<label for="location">location</label>
-						<select id="location" label="location">
-							<option value="" selected>choose</option>
+					location
+						<select id="location" name="location">
+							<option value="choose" selected>choose</option>
 							<option value="Utrecht">Utrecht</option>
 							<option value="Amsterdam">Amsterdam</option>
 							<option value="Zwolle">Zwolle</option>
-						</select>
-					</tr>
-					<br>
-					<tr>
-						<label for="product">product</label>
-						<select id="product" label="product">
-							<option value="" selected>choose</option>
-							<option value="schoenen">schoenen</option>
-							<option value="trui">trui</option>
-							<option value="broek">broek</option>
-						</select>
-					</tr>
-					<br>
-					<tr>
-						<label class="slider" for="price">price</label>
-						<input type="range" id="rangeInput" name="rangeInput" min="10"
-							max="200" value="105" oninput="amount.value=rangeInput.value" />
-					</tr>
-					<br>
-					<tr>
-						<td><input class="btn btn-default" type="submit"
-							value="submit"></td>
-						<td><input class="btn btn-default" type="reset" value="reset"></td>
-					</tr>
-					<br>
-					</table>
+						</select><br>
+					product
+						<select id="product" name="product">
+							<option value="choose" selected>choose</option>
+							<option value="schoes">shoes</option>
+							<option value="sweater">sweater</option>
+							<option value="trousers">trousers</option>
+						</select><br>
+					brand	
+						<select id="brand" name="brand">
+							<option value="choose" selected>choose</option>
+							<option value="NikeSB">Nike SB</option>
+							<option value="NikeAM">Nike Air max</option>
+							<option value="Adidas">Adidas</option>
+							<option value="Puma">Puma</option>
+							<option value="Converse">Converse All Star</option>
+						</select><br>
+					price
+						<input type="range" id="rangeInput" name="price" min="10"
+							max="200" value="105" oninput="amount.value=rangeInput.value" /><br>
+						<input class="btn btn-default" type="submit"
+							value="submit">
+						<input class="btn btn-default" type="reset" value="reset">
 				</form>
 			</div>
 		</div>
