@@ -20,7 +20,9 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
 	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
 	crossorigin="anonymous"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
 <style>
 .row {
 	padding: 20px 20px 20px 20px;
@@ -31,14 +33,24 @@ td {
 	padding: 5px 5px 5px 5px;
 }
 
-.login{
-padding: 15px 15px 15px 15px;
-color: white;
-background-color: #009999;
+.login {
+	padding: 20px 20px 20px 20px;
+	color: white;
+	background-color: #009999;
 }
-#map{
-width: 100%;
-height: 200px;
+
+#map {
+	width: 100%;
+	height: 600px;
+}
+
+.row {
+	width: auto;
+	height: 600px;
+}
+
+.slider {
+	width: 100px;
 }
 </style>
 
@@ -53,40 +65,38 @@ height: 200px;
 			</div>
 			<div class="input_form">
 				<form action="/databaseTest" method="POST">
-					<table>
-						<tr>
-							<td>shop</td>
-							<td><input type="text" name="winkelnaam" /></td>
-						</tr>
-						<tr>
-							<td>location</td>
-							<td><input type="text" name="locatie" /></td>
-						</tr>
-						<tr>
-							<td>product</td>
-							<td><input type="text" name="product" /></td>
-						</tr>
-						<tr>
-							<td>brand</td>
-							<td><input type="text" name="merk" /></td>
-						</tr>
-						<tr>
-							<td>image</td>
-							<td><input type="text" name="afbeelding" /></td>
-						</tr>
-						<tr>
-							<td>price</td>
-							<td><input type="range" id="rangeInput" name="rangeInput"
-								min="10" max="200" value="105"
-								oninput="amount.value=rangeInput.value" /></td>
-							<td><output name="amount" for="rangeInput"></output></td>
-						</tr>
-						<tr>
-							<td><input class="btn btn-default" type="submit"
-								value="submit">
-							<td><input class="btn btn-default" type="reset"
-								value="reset"></td>
-						</tr>
+					<tr>
+						<label for="location">location</label>
+						<select id="location" label="location">
+							<option value="" selected>choose</option>
+							<option value="Utrecht">Utrecht</option>
+							<option value="Amsterdam">Amsterdam</option>
+							<option value="Zwolle">Zwolle</option>
+						</select>
+					</tr>
+					<br>
+					<tr>
+						<label for="product">product</label>
+						<select id="product" label="product">
+							<option value="" selected>choose</option>
+							<option value="schoenen">schoenen</option>
+							<option value="trui">trui</option>
+							<option value="broek">broek</option>
+						</select>
+					</tr>
+					<br>
+					<tr>
+						<label class="slider" for="price">price</label>
+						<input type="range" id="rangeInput" name="rangeInput" min="10"
+							max="200" value="105" oninput="amount.value=rangeInput.value" />
+					</tr>
+					<br>
+					<tr>
+						<td><input class="btn btn-default" type="submit"
+							value="submit"></td>
+						<td><input class="btn btn-default" type="reset" value="reset"></td>
+					</tr>
+					<br>
 					</table>
 				</form>
 			</div>
