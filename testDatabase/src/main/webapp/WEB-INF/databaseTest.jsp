@@ -22,22 +22,30 @@
 	crossorigin="anonymous"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-
+<script
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCssdHocAm9n76yFCLmhtP7tPNOo2nRiY&callback=initMap"></script>
 <style>
 .row {
 	padding: 20px 20px 20px 20px;
 }
 
-td {
-	color: white;
-	padding: 5px 5px 5px 5px;
-}
-
 .login {
-	padding: 20px 20px 20px 20px;
-	color: black;
+	padding: 40px 40px 40px 40px;
 	background-color: #009999;
 }
+.logo{
+	color: white;
+	font-family: Century Gothic;
+}
+.input-form{
+	color: black;
+}
+
+p{
+	padding-top: 20px;
+	font-family: Century Gothic;
+	font-size: 16px;
+	}
 
 #map {
 	width: 100%;
@@ -65,21 +73,20 @@ td {
 			</div>
 			<div class="input_form">
 				<form action="/databaseTest" method="POST">
-					location
+					<p style="color:white;">location</p>
 						<select id="location" name="location">
 							<option value="choose" selected>choose</option>
 							<option value="Utrecht">Utrecht</option>
 							<option value="Amsterdam">Amsterdam</option>
 							<option value="Zwolle">Zwolle</option>
-						</select><br>
-					product
+						</select><br><p style="color:white;">product</p>
 						<select id="product" name="product">
 							<option value="choose" selected>choose</option>
 							<option value="schoes">shoes</option>
 							<option value="sweater">sweater</option>
 							<option value="trousers">trousers</option>
 						</select><br>
-					brand	
+					<p style="color:white;">brand</p>	
 						<select id="brand" name="brand">
 							<option value="choose" selected>choose</option>
 							<option value="NikeSB">Nike SB</option>
@@ -88,9 +95,10 @@ td {
 							<option value="Puma">Puma</option>
 							<option value="Converse">Converse All Star</option>
 						</select><br>
-					price
+					<p style="color:white;">price</p>
 						<input type="range" id="rangeInput" name="price" min="10"
-							max="200" value="105" oninput="amount.value=rangeInput.value" /><br>
+							max="200" value="105" onchange="updateTextInput(this.value);" style="color:black">
+						<input type="text" id="textInput" value="">	<br>
 						<input class="btn btn-default" type="submit"
 							value="submit">
 						<input class="btn btn-default" type="reset" value="reset">
@@ -103,17 +111,13 @@ td {
 				<h3>Kaart demo import data</h3>
 				<script>
 					function initMap() {
-						var locatie = {
-							lat : 52.090688,
-							lng : 5.121647
-						};
-						var map = new google.maps.Map(document
-								.getElementById('map'), { //to find the map div on the webpage
-							zoom : 14,
-							center : locatie
+						var utrecht = {lat : 52.090688, lng : 5.121647};
+						var map = new google.maps.Map(document.getElementById('map'),{
+							zoom : 15
+							center: utrecht
 						});
 						var marker = new google.maps.Marker({
-							position : locatie,
+							position : utrecht,
 							map : map
 						});
 					}

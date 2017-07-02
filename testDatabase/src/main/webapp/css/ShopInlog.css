@@ -5,25 +5,20 @@ body{
 }
 
 .row{
-	font-family: Arial;
 	width: auto;
 	overflow: auto;
 	margin: 0 auto;
 	}
 	
-
-
 .logo{
 	width: 400px;
 	overflow: auto;
-	margin: 20px;
 }
 
 .logo h1{
 	margin: 0;
 	padding: 0;
 	font-size: 45px;
-	font-family: Verdana;
 	font-weight: 100;
 }
 
