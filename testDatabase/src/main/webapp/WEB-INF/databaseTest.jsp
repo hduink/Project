@@ -33,19 +33,21 @@
 	padding: 40px 40px 40px 40px;
 	background-color: #009999;
 }
-.logo{
+
+.logo {
 	color: white;
 	font-family: Century Gothic;
 }
-.input-form{
+
+.input-form {
 	color: black;
 }
 
-p{
+p {
 	padding-top: 20px;
 	font-family: Century Gothic;
 	font-size: 16px;
-	}
+}
 
 #map {
 	width: 100%;
@@ -73,35 +75,36 @@ p{
 			</div>
 			<div class="input_form">
 				<form action="/databaseTest" method="POST">
-					<p style="color:white;">location</p>
-						<select id="location" name="location">
-							<option value="choose" selected>choose</option>
-							<option value="Utrecht">Utrecht</option>
-							<option value="Amsterdam">Amsterdam</option>
-							<option value="Zwolle">Zwolle</option>
-						</select><br><p style="color:white;">product</p>
-						<select id="product" name="product">
-							<option value="choose" selected>choose</option>
-							<option value="schoes">shoes</option>
-							<option value="sweater">sweater</option>
-							<option value="trousers">trousers</option>
-						</select><br>
-					<p style="color:white;">brand</p>	
-						<select id="brand" name="brand">
-							<option value="choose" selected>choose</option>
-							<option value="NikeSB">Nike SB</option>
-							<option value="NikeAM">Nike Air max</option>
-							<option value="Adidas">Adidas</option>
-							<option value="Puma">Puma</option>
-							<option value="Converse">Converse All Star</option>
-						</select><br>
-					<p style="color:white;">price</p>
-						<input type="range" id="rangeInput" name="price" min="10"
-							max="200" value="105" onchange="updateTextInput(this.value);" style="color:black">
-						<input type="text" id="textInput" value="">	<br>
-						<input class="btn btn-default" type="submit"
-							value="submit">
-						<input class="btn btn-default" type="reset" value="reset">
+					<p style="color: white;">location</p>
+					<select id="location" name="location">
+						<option value="choose" selected>choose</option>
+						<option value="Utrecht">Utrecht</option>
+						<option value="Amsterdam">Amsterdam</option>
+						<option value="Zwolle">Zwolle</option>
+					</select><br>
+					<p style="color: white;">product</p>
+					<select id="product" name="product">
+						<option value="choose" selected>choose</option>
+						<option value="schoes">shoes</option>
+						<option value="sweater">sweater</option>
+						<option value="trousers">trousers</option>
+					</select><br>
+					<p style="color: white;">brand</p>
+					<select id="brand" name="brand">
+						<option value="choose" selected>choose</option>
+						<option value="NikeSB">Nike SB</option>
+						<option value="NikeAM">Nike Air max</option>
+						<option value="Adidas">Adidas</option>
+						<option value="Puma">Puma</option>
+						<option value="Converse">Converse All Star</option>
+					</select><br>
+					<p style="color: white;">price</p>
+					<input type="range" id="rangeInput" name="price" min="10" max="200"
+						value="105" onchange="updateTextInput(this.value);"
+						style="color: black"> <input type="text" id="textInput"
+						value=""> <br> <input class="btn btn-default"
+						type="submit" value="submit"> <input
+						class="btn btn-default" type="reset" value="reset">
 				</form>
 			</div>
 		</div>
@@ -109,17 +112,49 @@ p{
 		<div class="col-md-7">
 			<div id="map">
 				<h3>Kaart demo import data</h3>
-				<script>
+				<script type="text/javascript">
+					//				var lat = ${markers.getLat};
+					//				var lng = ${markers.getLng};
+
 					function initMap() {
-						var utrecht = {lat : 52.090688, lng : 5.121647};
-						var map = new google.maps.Map(document.getElementById('map'),{
-							zoom : 15
-							center: utrecht
+						var map;
+						map = new google.maps.Map(document.getElementById('map'),{
+									zoom : 15,
+									center : new google.maps.LatLng(52.090718,
+											5.121597)
+								});
+
+						var features = [ {
+							position : new google.maps.LatLng(52.0915, 5.1155)
+						}, {
+							position : new google.maps.LatLng(52.0915, 5.11575)
+						}, {
+							position : new google.maps.LatLng(52.0907, 5.11681)
+						}, {
+							position : new google.maps.LatLng(52.0909, 5.11791)
+						}, {
+							position : new google.maps.LatLng(52.0928, 5.11991)
+						} ];
+
+						var myLatLng = {
+							lat : 52.090718,
+							lng : 5.121597
+						}
+						var marker2 = new google.maps.Marker({
+							position : myLatLng,
+							map : map,
+							title : 'shoptest'
 						});
-						var marker = new google.maps.Marker({
-							position : utrecht,
-							map : map
+
+						features.forEach(function(feature) {
+							var marker = new google.maps.Marker({
+								position : feature.position,
+								map : map
+							});
+
+							marker.setMap(map);
 						});
+						
 					}
 				</script>
 				<script async defer

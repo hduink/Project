@@ -4,9 +4,14 @@
 <html>
 <head>
 
-<title>Insert title here</title>
+<title></title>
 </head>
 <body>
+
+<p>${markers.lat} 
+${markers.lng}
+
+</p>
 
 </body>
 </html>
