@@ -1,17 +1,22 @@
 package com.duinker.testDatabase;
 
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+
 
 @Controller						
 public class DatabaseController {
 	
 	@Autowired
 	private ShopRepository repo;
+
 	
 	@RequestMapping(value="/databaseTest", method=RequestMethod.GET)
 	public String inputForm(){
@@ -19,11 +24,28 @@ public class DatabaseController {
 		}
 		
 	@RequestMapping(value="/databaseTest", method=RequestMethod.POST)
-	public String inputSubmit(InputSearch inputSearch){
-		repo.save(inputSearch);
-		return "databaseTest";
+	public String inputSubmit(String locatie, String merk, String prijs, HttpServletRequest model){
+		
+		Casus b = new Casus();
+		b.setLocatie(locatie);
+		b.setMerk(merk);
+		b.setPrijs(prijs);
+		
+		model.getSession().setAttribute("model", b);
+		return "redirect:/search";
 	}	
 	
+	@RequestMapping(value="/search", method=RequestMethod.GET)
+	public String getResults(HttpServletRequest requestModel, Model model){
+		Casus b = (Casus) requestModel.getSession().getAttribute("model");
+		
+		List<Casus> filter = repo.zoekinput(b.getLocatie(), b.getMerk(), b.getPrijs());
+		model.addAttribute("filter", filter);
+		return "databaseReturn";
+		
+	}	
+
+}
 //	@RequestMapping(value="/testing", method=RequestMethod.GET)
 //	public String testmoment (Model model){
 //		Markers marker = new Markers();
@@ -45,4 +67,3 @@ public class DatabaseController {
 //		return repo.findAll();
 //	}
 
-}

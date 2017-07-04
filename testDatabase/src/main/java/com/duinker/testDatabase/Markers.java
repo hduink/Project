@@ -27,6 +27,11 @@ public class Markers {
 				this.lat = lat;
 				this.lng =lng;
 		}
+		@Override
+		public String toString() {
+			return "Markers [idmarkers=" + idmarkers + ", winkelnaam=" + winkelnaam + ", product=" + product + ", merk="
+					+ merk + ", prijs=" + prijs + ", lat=" + lat + ", lng=" + lng + "]";
+		}
 		
 		public int getIdmarkers(){
 			return idmarkers;
@@ -70,4 +75,5 @@ public class Markers {
 		public void setLng(float lng) {
 			this.lng = lng;
 		}
+	
 }
