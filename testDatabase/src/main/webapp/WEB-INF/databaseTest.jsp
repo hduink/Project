@@ -97,7 +97,7 @@ p {
 						<option value="0-99">0-99</option>
 						<option value="100-149">100-149</option>
 						<option value="150+">150+</option>
-					</select><br>
+					</select><br><br>
 					<input class="btn btn-default" type="submit" value="submit"></input> 
 					<input class="btn btn-default" type="reset" value="reset"></input>
 				</form>
@@ -108,48 +108,42 @@ p {
 			<div id="map">
 				<h3>Kaart demo import data</h3>
 				<script type="text/javascript">
-					//				var lat = ${markers.getLat};
-					//				var lng = ${markers.getLng};
 
 					function initMap() {
 						var map;
 						map = new google.maps.Map(document.getElementById('map'),{
 									zoom : 15,
-									center : new google.maps.LatLng(52.090718,
-											5.121597)
+									center : new google.maps.LatLng(52.368647, 4.893116)
 								});
 
 						var features = [ {
-							position : new google.maps.LatLng(52.0915, 5.1155)
+							position : new google.maps.LatLng(52.369944, 4.891491)
 						}, {
-							position : new google.maps.LatLng(52.0915, 5.11575)
+							position : new google.maps.LatLng(52.372441, 4.892126)
 						}, {
-							position : new google.maps.LatLng(52.0907, 5.11681)
+							position : new google.maps.LatLng(52.372441, 4.892126)
 						}, {
-							position : new google.maps.LatLng(52.0909, 5.11791)
+							position : new google.maps.LatLng(52.367948, 4.89198)
 						}, {
-							position : new google.maps.LatLng(52.0928, 5.11991)
-						} ];
+							position : new google.maps.LatLng(52.365358, 4.879297)
+						},  {
+							position : new google.maps.LatLng(52.365358, 4.879297)
+						}, {
+							position : new google.maps.LatLng(52.373562, 4.894368)
+						}, {
+							position : new google.maps.LatLng(52.373562, 4.894368)
+						}, {
+							position : new google.maps.LatLng(52.369944, 4.891491)
+						}];
 
-						var myLatLng = {
-							lat : 52.090718,
-							lng : 5.121597
-						}
-						var marker2 = new google.maps.Marker({
-							position : myLatLng,
-							map : map,
-							title : 'shoptest'
-						});
-
-						features.forEach(function(feature) {
+						
+						 features.forEach(function(feature) {
 							var marker = new google.maps.Marker({
 								position : feature.position,
 								map : map
 							});
-
 							marker.setMap(map);
-						});
-						
+						}); 
 					}
 				</script>
 				<script async defer

@@ -108,49 +108,74 @@ p {
 			<div id="map">
 				<h3>Kaart demo import data</h3>
 				<script type="text/javascript">
-					//				var lat = ${markers.getLat};
-					//				var lng = ${markers.getLng};
 
 					function initMap() {
+						
+						var locatie = [
+							<c:forEach items="${filter}" var = "items">
+								['${items.naam}', '${items.merk}', '${item.prijs}', '${items.lat}', '${items.lng}']
+							</c:forEach>
+						];		
+							
 						var map;
 						map = new google.maps.Map(document.getElementById('map'),{
 									zoom : 15,
-									center : new google.maps.LatLng(52.090718,
-											5.121597)
-								});
-
-						var features = [ {
-							position : new google.maps.LatLng(52.0915, 5.1155)
-						}, {
-							position : new google.maps.LatLng(52.0915, 5.11575)
-						}, {
-							position : new google.maps.LatLng(52.0907, 5.11681)
-						}, {
-							position : new google.maps.LatLng(52.0909, 5.11791)
-						}, {
-							position : new google.maps.LatLng(52.0928, 5.11991)
-						} ];
-
-						var myLatLng = {
-							lat : 52.090718,
-							lng : 5.121597
-						}
-						var marker2 = new google.maps.Marker({
-							position : myLatLng,
-							map : map,
-							title : 'shoptest'
+									center : new google.maps.LatLng(52.368647, 4.893116)
 						});
-
+						
+						
+						for( var i=0; i < locatie.length; i++){
+							var data = filter[i]
+								var latlng = new google.maps.LatLng(locatie[i][3],locatie[i][4]);
+								var marker = new google.maps.Markers{(
+										position : data.latlng
+										map : map
+										title : data.locatie[i][0]
+								})
+								}
+								marker.setMap(map);
+						}
+				
+				/* 		var features = [ {
+							position : new google.maps.LatLng(52.369944, 4.891491)
+						}, {
+							position : new google.maps.LatLng(52.372441, 4.892126)
+						}, {
+							position : new google.maps.LatLng(52.372441, 4.892126)
+						}, {
+							position : new google.maps.LatLng(52.367948, 4.89198)
+						}, {
+							position : new google.maps.LatLng(52.365358, 4.879297)
+						},  {
+							position : new google.maps.LatLng(52.365358, 4.879297)
+						}, {
+							position : new google.maps.LatLng(52.373562, 4.894368)
+						}, {
+							position : new google.maps.LatLng(52.373562, 4.894368)
+						}, {
+							position : new google.maps.LatLng(52.369944, 4.891491)
+						}];
+						
 						features.forEach(function(feature) {
 							var marker = new google.maps.Marker({
 								position : feature.position,
 								map : map
 							});
-
 							marker.setMap(map);
-						});
+						}); */
+					
+					/* 	function (marker, data){	//zie var data = markers[1]}
+							google.maps.event.addListener(marker, "click", function (e){
+								infoWindow.setContent(data.description);
+								infoWindow.open(map,marker);								
+							});
+						})(marker, data);
 						
-					}
+						}
+							marker.setMap(map);
+						}); */
+						
+					
 				</script>
 				<script async defer
 					src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCssdHocAm9n76yFCLmhtP7tPNOo2nRiY&callback=initMap">
