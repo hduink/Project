@@ -82,12 +82,11 @@ p {
 				<form action="/databaseTest" method="POST">
 					<p style="color: white;">location</p>
 					<select id="locatie" name="locatie">
-						<option value="choose" selected>choose</option>
 						<option value="Utrecht">Utrecht</option>
-						<option value="Amsterdam">Amsterdam</option>
+						<option value="Amsterdam" selected>Amsterdam</option>
 						<option value="Zwolle">Zwolle</option>
 					</select><br>
-					<p style="color: white;">brand</p>
+					<p style="color: white; padding:10px;" >brand</p>
 					<select id="merk" name="merk">
 						<option value="choose" selected>choose</option>
 						<option value="Adidas">Adidas</option>
@@ -95,6 +94,8 @@ p {
 						<option value="Sacha">Sacha</option>
 						<option value="Dune London">Dune London</option>
 						<option value="Filling Pieces">Filling Pieces</option>
+						<option value="Asics">Asics</option>
+						<option value="Puma">Puma</option>
 					</select><br>
 					<p style="color: white;">price</p>
 					<select id="prijs" name="prijs">
@@ -120,35 +121,6 @@ p {
 									zoom : 15,
 									center : new google.maps.LatLng(52.368647, 4.893116)
 								});
-
-/* 						var features = [ {
-							position : new google.maps.LatLng(52.369944, 4.891491)
-						}, {
-							position : new google.maps.LatLng(52.372441, 4.892126)
-						}, {
-							position : new google.maps.LatLng(52.372441, 4.892126)
-						}, {
-							position : new google.maps.LatLng(52.367948, 4.89198)
-						}, {
-							position : new google.maps.LatLng(52.365358, 4.879297)
-						},  {
-							position : new google.maps.LatLng(52.365358, 4.879297)
-						}, {
-							position : new google.maps.LatLng(52.373562, 4.894368)
-						}, {
-							position : new google.maps.LatLng(52.373562, 4.894368)
-						}, {
-							position : new google.maps.LatLng(52.369944, 4.891491)
-						}];
-
-						
-						 features.forEach(function(feature) {
-							var marker = new google.maps.Marker({
-								position : feature.position,
-								map : map
-							});
-							
-						});  */
 					}
 				</script>
 				<script async defer

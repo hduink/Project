@@ -103,7 +103,7 @@ p {
 										title : locatie[i][0]
 								});
 								console.log("marker" + marker.position);
-								}
+								
 						google.maps.event.addListener(
 								marker,'click',
 								(function (marker, i){
@@ -114,6 +114,7 @@ p {
 										document.getElementById("afbeelding").src = (locatie[i][6]);
 									}
 								})(marker,i));
+						}
 					}
 					
 				</script>

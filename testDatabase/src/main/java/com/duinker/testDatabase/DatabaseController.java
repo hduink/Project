@@ -32,10 +32,10 @@ public class DatabaseController {
 		b.setPrijs(prijs);
 		
 		model.getSession().setAttribute("model", b);
-		return "redirect:/search";
+		return "redirect:/databaseReturn";
 	}	
 	
-	@RequestMapping(value="/search", method=RequestMethod.GET)
+	@RequestMapping(value="/databaseReturn", method=RequestMethod.GET)
 	public String getResults(HttpServletRequest requestModel, Model model){
 		Casus b = (Casus) requestModel.getSession().getAttribute("model");
 		
