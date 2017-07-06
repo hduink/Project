@@ -19,8 +19,15 @@ public class Casus {
 	private double lat;
 	private double lng;
 	private String icon;
+	private String echte_prijs;
 	
 	
+	public String getEchte_prijs() {
+		return echte_prijs;
+	}
+	public void setEchte_prijs(String echte_prijs) {
+		this.echte_prijs = echte_prijs;
+	}
 	public long getId() {
 		return id;
 	}

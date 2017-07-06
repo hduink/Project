@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,23 +8,17 @@
 <link href="css/ShopInlog.css" rel="stylesheet" type="text/css">
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-	crossorigin="anonymous">
-<!-- Optional theme -->
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
-	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
-	crossorigin="anonymous">
-<!-- Latest compiled and minified JavaScript -->
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+<!-- JQuery library -->
 <script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-	crossorigin="anonymous"></script>
+  src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script
-	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-<script
-	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCssdHocAm9n76yFCLmhtP7tPNOo2nRiY&callback=initMap"></script>
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!--  Latest compiled Javascript -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
 <style>
 .row {
 	padding: 20px 20px 20px 20px;
@@ -32,6 +27,7 @@
 .login {
 	padding: 40px 40px 40px 40px;
 	background-color: #009999;
+	height: 600px;
 }
 
 .logo {
@@ -73,34 +69,11 @@ p {
 				<h1>Shop Search</h1>
 				<h2>What are you looking for?</h2>
 			</div>
-			<div class="input_form">
-				<form action="/databaseTest" method="POST">
-					<p style="color: white;">location</p>
-					<select id="locatie" name="locatie">
-						<option value="choose" selected>choose</option>
-						<option value="Utrecht">Utrecht</option>
-						<option value="Amsterdam">Amsterdam</option>
-						<option value="Zwolle">Zwolle</option>
-					</select><br>
-					<p style="color: white;">brand</p>
-					<select id="merk" name="merk">
-						<option value="choose" selected>choose</option>
-						<option value="Adidas">Adidas</option>
-						<option value="Nike">Nike</option>
-						<option value="Sacha">Sacha</option>
-						<option value="Dune London">Dune London</option>
-						<option value="Filling Pieces">Filling Pieces</option>
-					</select><br>
-					<p style="color: white;">price</p>
-					<select id="prijs" name="prijs">
-						<option value="choose" selected>choose</option>
-						<option value="0-99">0-99</option>
-						<option value="100-149">100-149</option>
-						<option value="150+">150+</option>
-					</select><br>
-					<input class="btn btn-default" type="submit" value="submit"></input> 
-					<input class="btn btn-default" type="reset" value="reset"></input>
-				</form>
+			<div id="invulling" color="white">
+				<a> <img id="afbeelding"/></a>
+				<p id="merk"></p>
+				<p id="naam"></p>
+				<p id="echte_prijs"></p>			
 			</div>
 		</div>
 
@@ -110,71 +83,38 @@ p {
 				<script type="text/javascript">
 
 					function initMap() {
-						
-						var locatie = [
-							<c:forEach items="${filter}" var = "items">
-								['${items.naam}', '${items.merk}', '${item.prijs}', '${items.lat}', '${items.lng}']
-							</c:forEach>
-						];		
-							
 						var map;
 						map = new google.maps.Map(document.getElementById('map'),{
 									zoom : 15,
 									center : new google.maps.LatLng(52.368647, 4.893116)
 						});
+						var locatie = [
+							<c:forEach items="${filter}" var="items">
+								['${items.naam}', '${items.merk}', '${item.prijs}', '${items.lat}', '${items.lng}', '${items.echte_prijs}', '${items.afbeelding}'],
+							</c:forEach>
+						];		
 						
-						
-						for( var i=0; i < locatie.length; i++){
-							var data = filter[i]
-								var latlng = new google.maps.LatLng(locatie[i][3],locatie[i][4]);
-								var marker = new google.maps.Markers{(
-										position : data.latlng
-										map : map
-										title : data.locatie[i][0]
-								})
+						for(var i=0; i < locatie.length; i++){
+													
+							var marker;
+								 marker = new google.maps.Marker({
+										position : new google.maps.LatLng(locatie[i][3],locatie[i][4]),
+										map : map,
+										title : locatie[i][0]
+								});
+								console.log("marker" + marker.position);
 								}
-								marker.setMap(map);
-						}
-				
-				/* 		var features = [ {
-							position : new google.maps.LatLng(52.369944, 4.891491)
-						}, {
-							position : new google.maps.LatLng(52.372441, 4.892126)
-						}, {
-							position : new google.maps.LatLng(52.372441, 4.892126)
-						}, {
-							position : new google.maps.LatLng(52.367948, 4.89198)
-						}, {
-							position : new google.maps.LatLng(52.365358, 4.879297)
-						},  {
-							position : new google.maps.LatLng(52.365358, 4.879297)
-						}, {
-							position : new google.maps.LatLng(52.373562, 4.894368)
-						}, {
-							position : new google.maps.LatLng(52.373562, 4.894368)
-						}, {
-							position : new google.maps.LatLng(52.369944, 4.891491)
-						}];
-						
-						features.forEach(function(feature) {
-							var marker = new google.maps.Marker({
-								position : feature.position,
-								map : map
-							});
-							marker.setMap(map);
-						}); */
-					
-					/* 	function (marker, data){	//zie var data = markers[1]}
-							google.maps.event.addListener(marker, "click", function (e){
-								infoWindow.setContent(data.description);
-								infoWindow.open(map,marker);								
-							});
-						})(marker, data);
-						
-						}
-							marker.setMap(map);
-						}); */
-						
+						google.maps.event.addListener(
+								marker,'click',
+								(function (marker, i){
+									return function(){
+										document.getElementById("naam").innerHTML = (locatie[i][0]);
+										document.getElementById("merk").innerHTML = (locatie[i][1]);
+										document.getElementById("echte_prijs").innerHTML = (locatie[i][5]);
+										document.getElementById("afbeelding").src = (locatie[i][6]);
+									}
+								})(marker,i));
+					}
 					
 				</script>
 				<script async defer

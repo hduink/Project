@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,7 +24,11 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 <script
-	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCssdHocAm9n76yFCLmhtP7tPNOo2nRiY&callback=initMap"></script>
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+
+
 <style>
 .row {
 	padding: 20px 20px 20px 20px;
@@ -116,7 +121,7 @@ p {
 									center : new google.maps.LatLng(52.368647, 4.893116)
 								});
 
-						var features = [ {
+/* 						var features = [ {
 							position : new google.maps.LatLng(52.369944, 4.891491)
 						}, {
 							position : new google.maps.LatLng(52.372441, 4.892126)
@@ -142,14 +147,13 @@ p {
 								position : feature.position,
 								map : map
 							});
-							marker.setMap(map);
-						}); 
+							
+						});  */
 					}
 				</script>
 				<script async defer
-					src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCssdHocAm9n76yFCLmhtP7tPNOo2nRiY&callback=initMap">
-					
-				</script>
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCssdHocAm9n76yFCLmhtP7tPNOo2nRiY&callback=initMap">
+</script>
 			</div>
 		</div>
 	</div>
